@@ -1,0 +1,66 @@
+{% extends 'header.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+  </head>
+  <body>
+
+    <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{% static 'images/bg_4.jpg' %}');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+              <p class="breadcrumbs">
+                <span class="mr-2"><a href="{% url 'index' %}">Home <i class="ion-ios-arrow-forward"></i></a></span> 
+                <span>Log in <i class="ion-ios-arrow-forward"></i></span>
+              </p>
+              <h1 class="mb-3 bread">Log in</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section class="ftco-section contact-section">
+      <div class="container">
+        <div class="row block-9 justify-content-center mb-5">
+          <div class="col-md-8 mb-md-5">
+            <form method="POST" class="bg-light p-5 contact-form">
+              {% csrf_token %}
+              <h2 class="text-center">Signup</h2>
+
+              <!-- Display messages -->
+              {% if messages %}
+                <div class="alert alert-info">
+                  {% for message in messages %}
+                    <p>{{ message }}</p>
+                  {% endfor %}
+                </div>
+              {% endif %}
+
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+              </div>
+              <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+              </div>
+              <div class="form-group">
+                <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary py-3 px-5">
+                {% csrf_token %}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+{% endblock %}
